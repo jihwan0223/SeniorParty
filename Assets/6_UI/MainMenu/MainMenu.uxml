@@ -1,0 +1,79 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:sp="SeniorParty.UI" editor-extension-mode="False">
+    <Style src="MainMenu.uss" />
+    <Style src="../UIControls/CircularProgress.uss" />
+    <ui:VisualElement name="screen" class="screen">
+
+        <!-- 메인 메뉴 -->
+        <ui:VisualElement name="menu" class="menu">
+            <ui:Label text="시니어 파티" name="title" class="title" />
+            <ui:Button text="게임 시작" name="start-button" class="big-button" />
+            <ui:Button text="설정" name="settings-button" class="big-button" />
+            <ui:Button text="나가기" name="quit-button" class="big-button" />
+        </ui:VisualElement>
+
+        <!-- 영역 선택 (화살표로 5개 영역 넘기며 점수 확인) -->
+        <ui:VisualElement name="domain-panel" class="domain-panel hidden">
+            <ui:Button text="◀ 메뉴로" name="domain-back-button" class="back-button" />
+            <ui:Label text="영역을 골라주세요" class="select-title" />
+            <ui:VisualElement class="select-row">
+                <ui:Button text="◀" name="domain-prev-button" class="arrow-button" />
+                <ui:Button name="domain-card" class="domain-card">
+                    <sp:CircularProgress name="domain-ring" value="0" max-value="100"
+                        track-color="#DCD6C8" thickness="34" class="domain-ring" />
+                    <ui:Label name="domain-name-label" class="domain-name" />
+                </ui:Button>
+                <ui:Button text="▶" name="domain-next-button" class="arrow-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 아이콘 선택 -->
+        <ui:VisualElement name="select-panel" class="select-panel hidden">
+            <ui:Button text="⚙" name="select-settings-button" class="gear-button" />
+            <ui:Label text="아이콘을 골라주세요" class="select-title" />
+            <ui:VisualElement class="select-row">
+                <ui:Button text="◀" name="prev-button" class="arrow-button" />
+                <ui:Button name="icon-button" class="icon" />
+                <ui:Button text="▶" name="next-button" class="arrow-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 설정 (볼륨 3종 + 초기화/나가기/종료) -->
+        <ui:VisualElement name="settings-panel" class="overlay hidden">
+            <ui:VisualElement name="settings-dialog" class="dialog dialog-large">
+                <ui:Button text="✕" name="settings-close-button" class="x-button" />
+                <ui:Label text="설정" class="dialog-title" />
+                <ui:VisualElement class="setting-row">
+                    <ui:Label text="전체 볼륨" class="setting-label" />
+                    <ui:Slider name="master-volume-slider" low-value="0" high-value="100" value="80" class="setting-slider" />
+                    <ui:Label text="80" name="master-volume-value" class="setting-value" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="setting-row">
+                    <ui:Label text="배경음악" class="setting-label" />
+                    <ui:Slider name="bgm-volume-slider" low-value="0" high-value="100" value="80" class="setting-slider" />
+                    <ui:Label text="80" name="bgm-volume-value" class="setting-value" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="setting-row">
+                    <ui:Label text="효과음" class="setting-label" />
+                    <ui:Slider name="sfx-volume-slider" low-value="0" high-value="100" value="80" class="setting-slider" />
+                    <ui:Label text="80" name="sfx-volume-value" class="setting-value" />
+                </ui:VisualElement>
+                <ui:VisualElement class="spacer" />
+                <ui:Button text="설정 초기화" name="settings-reset-button" class="big-button secondary" />
+                <ui:Button text="메뉴로 나가기" name="menu-exit-button" class="big-button" />
+                <ui:Button text="게임 종료" name="settings-quit-button" class="big-button danger" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 종료 확인 -->
+        <ui:VisualElement name="quit-panel" class="overlay hidden">
+            <ui:VisualElement class="dialog">
+                <ui:Label text="게임을 종료할까요?" class="dialog-title" />
+                <ui:Button text="종료" name="quit-confirm-button" class="big-button" />
+                <ui:Button text="취소" name="quit-cancel-button" class="big-button secondary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

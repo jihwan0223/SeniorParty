@@ -1,0 +1,16 @@
+.circular-progress {
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-progress__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -unity-text-align: middle-center;
+    font-size: 40px;
+    color: rgb(40, 40, 40);
+    white-space: nowrap;
+}
