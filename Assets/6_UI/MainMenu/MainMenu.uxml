@@ -1,6 +1,5 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:sp="SeniorParty.UI" editor-extension-mode="False">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
     <Style src="MainMenu.uss" />
-    <Style src="../UIControls/CircularProgress.uss" />
     <ui:VisualElement name="screen" class="screen">
 
         <!-- 메인 메뉴 -->
@@ -11,18 +10,60 @@
             <ui:Button text="나가기" name="quit-button" class="big-button" />
         </ui:VisualElement>
 
-        <!-- 영역 선택 (화살표로 5개 영역 넘기며 점수 확인) -->
-        <ui:VisualElement name="domain-panel" class="domain-panel hidden">
-            <ui:Button text="◀ 메뉴로" name="domain-back-button" class="back-button" />
-            <ui:Label text="영역을 골라주세요" class="select-title" />
-            <ui:VisualElement class="select-row">
-                <ui:Button text="◀" name="domain-prev-button" class="arrow-button" />
-                <ui:Button name="domain-card" class="domain-card">
-                    <sp:CircularProgress name="domain-ring" value="0" max-value="100"
-                        track-color="#DCD6C8" thickness="34" class="domain-ring" />
-                    <ui:Label name="domain-name-label" class="domain-name" />
-                </ui:Button>
-                <ui:Button text="▶" name="domain-next-button" class="arrow-button" />
+        <!-- 게임 시작 누르면 뜸: 아래 탭바(게임/정보/임시1/임시2/임시3)로 화면 전환 -->
+        <ui:VisualElement name="game-tabs-panel" class="domain-panel hidden">
+            <ui:Button text="◀ 메뉴로" name="game-tabs-back-button" class="back-button" />
+
+            <!-- 게임 탭: 게임 박스 9개 -->
+            <ui:VisualElement name="tab-content-game" class="game-menu-top">
+                <ui:VisualElement class="game-box-container">
+                    <ui:Button text="게임 1" name="game-box-1" class="game-box" />
+                    <ui:Button text="게임 2" name="game-box-2" class="game-box" />
+                    <ui:Button text="게임 3" name="game-box-3" class="game-box" />
+                    <ui:Button text="게임 4" name="game-box-4" class="game-box" />
+                    <ui:Button text="게임 5" name="game-box-5" class="game-box" />
+                    <ui:Button text="게임 6" name="game-box-6" class="game-box" />
+                    <ui:Button text="게임 7" name="game-box-7" class="game-box" />
+                    <ui:Button text="게임 8" name="game-box-8" class="game-box" />
+                    <ui:Button text="게임 9" name="game-box-9" class="game-box" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- 정보/임시 탭: 아직 내용 없음 -->
+            <ui:VisualElement name="tab-content-info" class="game-menu-top hidden">
+                <ui:Label text="정보 (준비 중)" class="select-title" />
+            </ui:VisualElement>
+            <ui:VisualElement name="tab-content-temp1" class="game-menu-top hidden">
+                <ui:Label text="임시1 (준비 중)" class="select-title" />
+            </ui:VisualElement>
+            <ui:VisualElement name="tab-content-temp2" class="game-menu-top hidden">
+                <ui:Label text="임시2 (준비 중)" class="select-title" />
+            </ui:VisualElement>
+            <ui:VisualElement name="tab-content-temp3" class="game-menu-top hidden">
+                <ui:Label text="임시3 (준비 중)" class="select-title" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="game-tabs-bar" class="game-nav-grid">
+                <ui:Button text="게임" name="bottom-tab-game" class="game-nav-item" />
+                <ui:VisualElement class="game-nav-divider" />
+                <ui:Button text="정보" name="bottom-tab-info" class="game-nav-item" />
+                <ui:VisualElement class="game-nav-divider" />
+                <ui:Button text="임시1" name="bottom-tab-temp1" class="game-nav-item" />
+                <ui:VisualElement class="game-nav-divider" />
+                <ui:Button text="임시2" name="bottom-tab-temp2" class="game-nav-item" />
+                <ui:VisualElement class="game-nav-divider" />
+                <ui:Button text="임시3" name="bottom-tab-temp3" class="game-nav-item" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 난이도 선택 (게임 박스 누르면 뜸) -->
+        <ui:VisualElement name="difficulty-panel" class="domain-panel hidden">
+            <ui:Button text="◀ 메뉴로" name="difficulty-back-button" class="back-button" />
+            <ui:Label text="난이도를 선택하세요" class="select-title" />
+            <ui:VisualElement class="difficulty-tabs">
+                <ui:Button text="하" name="difficulty-easy-button" class="difficulty-button" />
+                <ui:Button text="중" name="difficulty-normal-button" class="difficulty-button" />
+                <ui:Button text="상" name="difficulty-hard-button" class="difficulty-button" />
             </ui:VisualElement>
         </ui:VisualElement>
 

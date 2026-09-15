@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 140448312}
   - component: {fileID: 140448311}
   - component: {fileID: 140448314}
+  - component: {fileID: 140448315}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -201,6 +202,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a082cf72657f498fa42c10a1696fb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeniorParty.SafeAreaApplier
+--- !u!114 &140448315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140448310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be4cbfea8065734084681ec8a9c1653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeniorParty.ItemSortGameController
+  easyItems: []
+  normalItems: []
+  hardItems: []
+  roundCount: 30
+  startingScore: 100
+  wrongPenalty: 10
 --- !u!1 &1038835754
 GameObject:
   m_ObjectHideFlags: 0

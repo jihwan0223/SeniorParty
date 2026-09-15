@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using SeniorParty.UI;
 
 namespace SeniorParty
 {
     public class MainMenuController : MonoBehaviour
     {
+        // 미니게임 씬에서 돌아올 때 어디로 갈지 알려주는 정적 상태(씬 전환 넘어서 값 유지용).
+        public enum ReturnTarget { None, GameTabs, GameTabsWithDifficulty }
+        public static ReturnTarget PendingReturnTarget = ReturnTarget.None;
+        public static string LastDifficulty;
+
         [SerializeField] private AudioMixer audioMixer;
 
         // GameAudioMixer에 Exposed된 파라미터 이름. 믹서 쪽 이름을 바꾸면 여기도 같이 바꿔야 한다.
@@ -15,37 +20,32 @@ namespace SeniorParty
         private const string BgmVolumeParam = "BGMVolune";
         private const string SfxVolumeParam = "SFXVolume";
 
-        private VisualElement domainPanel;
+        private VisualElement gameTabsPanel;
+        private VisualElement difficultyPanel;
         private VisualElement selectPanel;
         private VisualElement settingsPanel;
         private VisualElement quitPanel;
 
+        // 게임 탭바(게임/정보/임시1/임시2/임시3): 인덱스로 내용/버튼을 짝지어 관리.
+        private static readonly string[] TabContentNames =
+            { "tab-content-game", "tab-content-info", "tab-content-temp1", "tab-content-temp2", "tab-content-temp3" };
+        private static readonly string[] TabButtonNames =
+            { "bottom-tab-game", "bottom-tab-info", "bottom-tab-temp1", "bottom-tab-temp2", "bottom-tab-temp3" };
+        private VisualElement[] tabContents;
+        private Button[] tabButtons;
+
+        // 난이도 패널에서 어떤 게임을 고른 건지 기억해두는 용도.
+        private string selectedGameName;
+
         private Button iconButton;
         private int iconIndex;
-
-        private CircularProgress domainRing;
-        private Label domainNameLabel;
-        private int domainIndex;
 
         // 설정 초기화 시 되돌아갈 값.
         private const float DefaultVolumeSlider = 100f;
         private readonly System.Collections.Generic.List<Slider> volumeSliders = new();
 
-        // 볼륨/영역 점수의 실제 저장소.
+        // 볼륨 설정의 실제 저장소.
         private SaveData saveData;
-
-        // 미니게임이 아직 없어서 실제 플레이 기록이 쌓이기 전까지 쓸 기본 점수.
-        private static readonly float[] DefaultDomainScores = { 73f, 40f, 88f, 55f, 60f };
-
-        // 영역 이름 + 색. 점수는 saveData.domainScores에서 같은 순서로 가져온다.
-        private static readonly (string label, Color color)[] Domains =
-        {
-            ("기억력", new Color(0.18f, 0.47f, 0.86f)),
-            ("주의력", new Color(0.25f, 0.66f, 0.35f)),
-            ("언어능력", new Color(0.88f, 0.63f, 0.13f)),
-            ("시공간 능력", new Color(0.54f, 0.37f, 0.78f)),
-            ("실행 기능", new Color(0.82f, 0.40f, 0.23f)),
-        };
 
         // 임시 아이콘: 색깔 원.
         private static readonly (string name, Color color)[] Icons =
@@ -62,28 +62,40 @@ namespace SeniorParty
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
             saveData = SaveManager.Load();
-            if (saveData.domainScores == null || saveData.domainScores.Length != Domains.Length)
-            {
-                saveData.domainScores = (float[])DefaultDomainScores.Clone();
-            }
 
             var root = GetComponent<UIDocument>().rootVisualElement;
 
-            domainPanel = root.Q<VisualElement>("domain-panel");
+            gameTabsPanel = root.Q<VisualElement>("game-tabs-panel");
+            difficultyPanel = root.Q<VisualElement>("difficulty-panel");
             selectPanel = root.Q<VisualElement>("select-panel");
             settingsPanel = root.Q<VisualElement>("settings-panel");
             quitPanel = root.Q<VisualElement>("quit-panel");
             iconButton = root.Q<Button>("icon-button");
 
-            domainRing = root.Q<CircularProgress>("domain-ring");
-            domainNameLabel = root.Q<Label>("domain-name-label");
+            root.Q<Button>("start-button").clicked += () => Show(gameTabsPanel);
+            root.Q<Button>("game-tabs-back-button").clicked += () => Hide(gameTabsPanel);
 
-            root.Q<Button>("start-button").clicked += () => Show(domainPanel);
-            root.Q<Button>("domain-back-button").clicked += () => Hide(domainPanel);
-            root.Q<Button>("domain-prev-button").clicked += () => CycleDomain(-1);
-            root.Q<Button>("domain-next-button").clicked += () => CycleDomain(1);
-            root.Q<Button>("domain-card").clicked += OnDomainCardClicked;
-            ApplyDomain();
+            tabContents = new VisualElement[TabContentNames.Length];
+            tabButtons = new Button[TabButtonNames.Length];
+            for (int i = 0; i < TabContentNames.Length; i++)
+            {
+                tabContents[i] = root.Q<VisualElement>(TabContentNames[i]);
+                tabButtons[i] = root.Q<Button>(TabButtonNames[i]);
+                int tabIndex = i;
+                tabButtons[i].clicked += () => SetGameTab(tabIndex);
+            }
+            SetGameTab(0);
+
+            for (int i = 1; i <= 9; i++)
+            {
+                string gameName = $"게임 {i}";
+                root.Q<Button>($"game-box-{i}").clicked += () => OnGameBoxClicked(gameName);
+            }
+
+            root.Q<Button>("difficulty-back-button").clicked += () => Hide(difficultyPanel);
+            root.Q<Button>("difficulty-easy-button").clicked += () => OnDifficultyClicked("하");
+            root.Q<Button>("difficulty-normal-button").clicked += () => OnDifficultyClicked("중");
+            root.Q<Button>("difficulty-hard-button").clicked += () => OnDifficultyClicked("상");
 
             root.Q<Button>("select-settings-button").clicked += () => Show(settingsPanel);
             root.Q<Button>("prev-button").clicked += () => CycleIcon(-1);
@@ -114,34 +126,62 @@ namespace SeniorParty
             root.Q<Button>("quit-cancel-button").clicked += () => Hide(quitPanel);
             root.Q<Button>("quit-confirm-button").clicked += Quit;
 
-            Hide(domainPanel);
+            Hide(gameTabsPanel);
+            Hide(difficultyPanel);
             Hide(selectPanel);
             Hide(settingsPanel);
             Hide(quitPanel);
             ApplyIcon();
+            ApplyPendingReturn();
         }
 
-        // 영역 카드를 이전/다음으로 넘긴다.
-        private void CycleDomain(int step)
+        // 하단 탭(게임/정보/임시1/임시2/임시3)을 바꾼다: 해당 내용만 보이고 그 탭 버튼만 강조.
+        private void SetGameTab(int index)
         {
-            domainIndex = (domainIndex + step + Domains.Length) % Domains.Length;
-            ApplyDomain();
+            for (int i = 0; i < tabContents.Length; i++)
+            {
+                bool active = i == index;
+                if (active)
+                {
+                    Show(tabContents[i]);
+                }
+                else
+                {
+                    Hide(tabContents[i]);
+                }
+                SetTabActive(tabButtons[i], active);
+            }
         }
 
-        // 현재 선택된 영역의 점수/색/이름을 화면에 반영한다.
-        private void ApplyDomain()
+        private static void SetTabActive(Button tab, bool active)
         {
-            var domain = Domains[domainIndex];
-            domainRing.Value = saveData.domainScores[domainIndex];
-            domainRing.ProgressColor = domain.color;
-            domainNameLabel.text = domain.label;
+            if (active)
+            {
+                tab.AddToClassList("tab-active");
+            }
+            else
+            {
+                tab.RemoveFromClassList("tab-active");
+            }
         }
 
-        // 영역 카드를 눌렀을 때 (나중에 해당 영역 미니게임으로 이동하도록 확장 예정).
-        private void OnDomainCardClicked()
+        // 게임 박스를 눌렀을 때: 난이도 패널을 연다.
+        private void OnGameBoxClicked(string gameName)
         {
-            var domain = Domains[domainIndex];
-            Debug.Log($"{domain.label} 영역 선택됨 (점수 {saveData.domainScores[domainIndex]}/100)");
+            selectedGameName = gameName;
+            Show(difficultyPanel);
+        }
+
+        // 난이도를 골랐을 때. 게임 1(물건 분류)만 아직 구현됨, 나머지는 로그만.
+        private void OnDifficultyClicked(string difficulty)
+        {
+            Debug.Log($"{selectedGameName} - 난이도 {difficulty} 선택됨");
+
+            if (selectedGameName == "게임 1")
+            {
+                LastDifficulty = difficulty;
+                SceneManager.LoadScene("Game1_ItemSort");
+            }
         }
 
         // 볼륨 슬라이더 하나를 초기화한다. initialValue/onValueChanged는 saveData 필드를 읽고 쓰기 위한 것.
@@ -243,12 +283,32 @@ namespace SeniorParty
             Debug.Log($"아이콘 선택됨: {Icons[iconIndex].name} ({iconIndex})");
         }
 
-        // 설정/영역/아이콘 패널을 모두 닫고 메인 메뉴로 돌아간다.
+        // 설정/게임탭/난이도/아이콘 패널을 모두 닫고 메인 메뉴로 돌아간다.
         private void GoToMenu()
         {
             Hide(settingsPanel);
-            Hide(domainPanel);
+            Hide(gameTabsPanel);
+            Hide(difficultyPanel);
             Hide(selectPanel);
+        }
+
+        // 미니게임에서 돌아왔을 때 원래 있던 게임 탭/난이도 화면을 다시 열어준다.
+        private void ApplyPendingReturn()
+        {
+            if (PendingReturnTarget == ReturnTarget.None)
+            {
+                return;
+            }
+
+            SetGameTab(0);
+            Show(gameTabsPanel);
+
+            if (PendingReturnTarget == ReturnTarget.GameTabsWithDifficulty)
+            {
+                Show(difficultyPanel);
+            }
+
+            PendingReturnTarget = ReturnTarget.None;
         }
 
         private static void Show(VisualElement panel) => panel?.RemoveFromClassList("hidden");

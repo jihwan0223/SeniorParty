@@ -1,0 +1,35 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="ItemSort.uss" />
+    <ui:VisualElement name="screen" class="screen">
+
+        <ui:Label text="30 / 30" name="remaining-label" class="remaining-label" />
+        <ui:Label text="7" name="timer-label" class="timer-label" />
+
+        <ui:VisualElement class="stage-row">
+            <ui:VisualElement class="preview-box">
+                <ui:VisualElement name="next-item-image" class="preview-icon" />
+            </ui:VisualElement>
+            <ui:Label text="&#8594;" class="stage-arrow" />
+            <ui:VisualElement name="item-stage" class="item-stage">
+                <ui:VisualElement name="item-box" class="item-box">
+                    <ui:VisualElement name="item-image" class="item-icon" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement class="answer-row">
+            <ui:Button text="보관" name="keep-button" class="big-button" />
+            <ui:Button text="버리기" name="discard-button" class="big-button danger" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="result-panel" class="result-screen hidden">
+            <ui:Label text="최종 점수: 0" name="final-score-label" class="result-title" />
+            <ui:Label text="총 걸린 시간: 0초" name="final-time-label" class="result-subtitle" />
+            <ui:VisualElement class="answer-row">
+                <ui:Button text="다시하기" name="retry-button" class="big-button" />
+                <ui:Button text="나가기" name="exit-button" class="big-button danger" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>
