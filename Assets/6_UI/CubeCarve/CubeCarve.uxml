@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:sp="SeniorParty.UI" editor-extension-mode="False">
+    <!-- 버튼/타이머/결과창 공통 스타일은 게임 1(ItemSort.uss) 것을 같이 쓴다 -->
+    <Style src="../ItemSort/ItemSort.uss" />
+    <Style src="CubeCarve.uss" />
+    <ui:VisualElement name="screen" class="screen">
+
+        <ui:Label text="5 / 5" name="remaining-label" class="remaining-label" />
+        <ui:Label text="이 모양대로 큐브를 깎으세요!" name="instruction-label" class="instruction-label" />
+        <ui:Label text="7" name="timer-label" class="timer-label" />
+        <sp:CubeView name="cube-view" class="cube-view" />
+        <ui:VisualElement name="carve-buttons" class="answer-row">
+            <ui:Button text="초기화" name="reset-button" class="big-button secondary" />
+            <ui:Button text="완성" name="done-button" class="big-button" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="result-panel" class="result-screen hidden">
+            <ui:Label text="최종 점수: 0" name="final-score-label" class="result-title" />
+            <ui:Label text="총 걸린 시간: 0초" name="final-time-label" class="result-subtitle" />
+            <ui:VisualElement class="answer-row">
+                <ui:Button text="다시하기" name="retry-button" class="big-button" />
+                <ui:Button text="나가기" name="exit-button" class="big-button danger" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

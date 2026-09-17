@@ -11,6 +11,7 @@ namespace SeniorParty
         public enum ReturnTarget { None, GameTabs, GameTabsWithDifficulty }
         public static ReturnTarget PendingReturnTarget = ReturnTarget.None;
         public static string LastDifficulty;
+        public static string LastGameName;
 
         [SerializeField] private AudioMixer audioMixer;
 
@@ -172,16 +173,25 @@ namespace SeniorParty
             Show(difficultyPanel);
         }
 
-        // 난이도를 골랐을 때. 게임 1(물건 분류)만 아직 구현됨, 나머지는 로그만.
+        // 난이도를 골랐을 때. 구현된 게임만 씬으로 이동, 나머지는 로그만.
         private void OnDifficultyClicked(string difficulty)
         {
             Debug.Log($"{selectedGameName} - 난이도 {difficulty} 선택됨");
 
-            if (selectedGameName == "게임 1")
+            string sceneName = selectedGameName switch
             {
-                LastDifficulty = difficulty;
-                SceneManager.LoadScene("Game1_ItemSort");
+                "게임 1" => "Game1_ItemSort",
+                "게임 2" => "Game2_CubeCarve",
+                _ => null,
+            };
+            if (sceneName == null)
+            {
+                return;
             }
+
+            LastGameName = selectedGameName;
+            LastDifficulty = difficulty;
+            SceneManager.LoadScene(sceneName);
         }
 
         // 볼륨 슬라이더 하나를 초기화한다. initialValue/onValueChanged는 saveData 필드를 읽고 쓰기 위한 것.
@@ -305,6 +315,8 @@ namespace SeniorParty
 
             if (PendingReturnTarget == ReturnTarget.GameTabsWithDifficulty)
             {
+                // 씬이 새로 로드돼서 어떤 게임이었는지 잊어버렸으니 되살려야 난이도 눌렀을 때 그 게임으로 감.
+                selectedGameName = LastGameName;
                 Show(difficultyPanel);
             }
 
