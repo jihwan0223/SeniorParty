@@ -1,0 +1,101 @@
+.back-button {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    height: 100px;
+    padding: 0 32px;
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    color: rgb(60, 60, 60);
+}
+
+.back-button:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.back-button:active {
+    color: rgb(20, 20, 20);
+}
+
+.heart-row {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.heart {
+    width: 100px;
+    height: 90px;
+    margin: 0 10px;
+}
+
+/* 레벨은 파란 배지, 몇 번째 도전인지는 옆에 큰 글자로. */
+.level-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.level-badge {
+    font-size: 56px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(45, 120, 220);
+    border-radius: 20px;
+    padding: 8px 32px;
+    -unity-text-align: middle-center;
+}
+
+.trial-label {
+    font-size: 56px;
+    color: rgb(30, 30, 30);
+    margin-left: 28px;
+    -unity-text-align: middle-center;
+}
+
+.instruction-label {
+    -unity-text-align: middle-center;
+    font-size: 56px;
+    color: rgb(40, 40, 40);
+    margin-bottom: 40px;
+    white-space: normal;
+}
+
+/* 3x3: 칸 260 + 여백 10*2 = 280, 280*3 = 840 */
+.matrix-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 840px;
+    height: 840px;
+}
+
+/* 꺼진 칸은 어둡게, 켜진 칸은 노랗게 해서 대비를 크게. */
+.matrix-cell {
+    width: 260px;
+    height: 260px;
+    margin: 10px;
+    padding: 0;
+    border-radius: 24px;
+    border-width: 4px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(90, 90, 90);
+}
+
+/* 기본 테마의 마우스 올림/누름 색이 켜진 것처럼 보이지 않게 막는다. */
+.matrix-cell:hover,
+.matrix-cell:active {
+    background-color: rgb(90, 90, 90);
+}
+
+.matrix-cell.lit {
+    background-color: rgb(255, 205, 50);
+}
+
+.matrix-cell.correct {
+    background-color: rgb(64, 168, 89);
+}
+
+.matrix-cell.wrong {
+    background-color: rgb(210, 55, 55);
+}

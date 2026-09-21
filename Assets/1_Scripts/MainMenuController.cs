@@ -166,22 +166,32 @@ namespace SeniorParty
             }
         }
 
-        // 게임 박스를 눌렀을 때: 난이도 패널을 연다.
+        // 게임 박스를 눌렀을 때: 난이도 패널을 연다. 게임 3(매트릭스)은 기획상 난이도가 없어서 바로 시작.
         private void OnGameBoxClicked(string gameName)
         {
             selectedGameName = gameName;
+            if (gameName == "게임 3")
+            {
+                StartGame(null);
+                return;
+            }
             Show(difficultyPanel);
         }
 
-        // 난이도를 골랐을 때. 구현된 게임만 씬으로 이동, 나머지는 로그만.
         private void OnDifficultyClicked(string difficulty)
         {
             Debug.Log($"{selectedGameName} - 난이도 {difficulty} 선택됨");
+            StartGame(difficulty);
+        }
 
+        // 구현된 게임만 씬으로 이동, 나머지는 아무것도 안 함.
+        private void StartGame(string difficulty)
+        {
             string sceneName = selectedGameName switch
             {
                 "게임 1" => "Game1_ItemSort",
                 "게임 2" => "Game2_CubeCarve",
+                "게임 3" => "Game3_Matrix",
                 _ => null,
             };
             if (sceneName == null)
