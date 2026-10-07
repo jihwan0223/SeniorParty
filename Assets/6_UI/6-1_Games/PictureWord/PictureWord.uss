@@ -1,0 +1,63 @@
+.picture-box {
+    width: 480px;
+    height: 480px;
+    margin-bottom: 48px;
+    padding: 32px;
+    border-radius: 24px;
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+}
+
+.picture-image {
+    position: absolute;
+    left: 32px;
+    top: 32px;
+    right: 32px;
+    bottom: 32px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.picture-placeholder {
+    font-size: 48px;
+    color: rgb(150, 150, 150);
+    -unity-text-align: middle-center;
+}
+
+.choice-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 1000px;
+    max-width: 95%;
+}
+
+/* 태블릿 터치 영역 88dp(약 142) 이상, 글자 28pt(약 45) 이상. */
+.choice-button {
+    width: 440px;
+    height: 160px;
+    margin: 16px;
+    font-size: 60px;
+    border-radius: 24px;
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(230, 225, 210);
+    color: rgb(30, 30, 30);
+    white-space: normal;
+}
+
+.choice-button:hover,
+.choice-button:active {
+    background-color: rgb(230, 225, 210);
+}
+
+.choice-button.correct {
+    background-color: rgb(60, 140, 75);
+    color: rgb(255, 255, 255);
+}
+
+.choice-button.wrong {
+    background-color: rgb(230, 140, 130);
+}

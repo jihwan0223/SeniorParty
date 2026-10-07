@@ -1,0 +1,246 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:sp="SeniorParty.UI" editor-extension-mode="False">
+    <Style src="MainMenu.uss" />
+    <Style src="../6-2_UI/UIControls/CircularProgress.uss" />
+    <ui:VisualElement name="screen" class="screen">
+
+        <!-- 메인 화면이 허전해서 넣은 반투명 장식 아이콘(클릭 막지 않게 picking-mode=Ignore). -->
+        <ui:VisualElement name="menu-decor" picking-mode="Ignore" class="menu-decor">
+            <ui:VisualElement class="menu-decor-icon menu-decor-icon-glasses" />
+            <ui:VisualElement class="menu-decor-icon menu-decor-icon-clock" />
+            <ui:VisualElement class="menu-decor-icon menu-decor-icon-cane" />
+            <ui:VisualElement class="menu-decor-icon menu-decor-icon-umbrella" />
+            <ui:VisualElement class="menu-decor-icon menu-decor-icon-apple" />
+            <ui:VisualElement class="menu-decor-icon menu-decor-icon-chair" />
+            <ui:VisualElement class="menu-decor-icon menu-decor-icon-guitar" />
+            <ui:VisualElement class="menu-decor-icon menu-decor-icon-bicycle" />
+        </ui:VisualElement>
+
+        <!-- 메인 메뉴 -->
+        <ui:VisualElement name="menu" class="menu">
+            <ui:Label text="시니어 파티" name="title" class="title" />
+            <ui:Button text="게임 시작" name="start-button" class="big-button" />
+            <ui:Button text="설정" name="settings-button" class="big-button" />
+            <ui:Button text="나가기" name="quit-button" class="big-button" />
+        </ui:VisualElement>
+
+        <!-- 게임 시작 누르면 뜸: 아래 탭바(게임/정보)로 화면 전환 -->
+        <ui:VisualElement name="game-tabs-panel" class="domain-panel hidden">
+            <!-- 탭 화면을 가로로 필름스트립처럼 나란히 두고(tab-track), viewport로 한 칸만
+                 보이게 잘라서, 드래그하면 손가락 따라 트랙 전체가 움직이는 스와이프 전환을 구현한다. -->
+            <ui:VisualElement name="tab-viewport" class="tab-viewport">
+            <ui:VisualElement name="tab-track" class="tab-track">
+            <!-- 게임 탭: 게임 박스 9개 -->
+            <ui:VisualElement name="tab-content-game" class="game-menu-top tab-page">
+                <ui:Label text="게임을 선택하세요!" class="select-title" />
+                <ui:VisualElement class="domain-legend">
+                    <ui:VisualElement class="domain-legend-item">
+                        <ui:VisualElement class="domain-dot domain-dot-memory" />
+                        <ui:Label text="기억력" class="domain-legend-label" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="domain-legend-item">
+                        <ui:VisualElement class="domain-dot domain-dot-attention" />
+                        <ui:Label text="주의력" class="domain-legend-label" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="domain-legend-item">
+                        <ui:VisualElement class="domain-dot domain-dot-executive" />
+                        <ui:Label text="실행기능" class="domain-legend-label" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="domain-legend-item">
+                        <ui:VisualElement class="domain-dot domain-dot-language" />
+                        <ui:Label text="언어능력" class="domain-legend-label" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="domain-legend-item">
+                        <ui:VisualElement class="domain-dot domain-dot-spatial" />
+                        <ui:Label text="시공간능력" class="domain-legend-label" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="game-box-container">
+                    <ui:ScrollView mode="Vertical" vertical-scroller-visibility="Hidden" class="game-box-scroll">
+                        <ui:VisualElement class="game-box-grid">
+                            <ui:Button name="game-box-1" class="game-box">
+                                <ui:Label text="물건 분류" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-executive" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-2" class="game-box">
+                                <ui:Label text="주사위 깎기" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-memory" />
+                                    <ui:VisualElement class="domain-dot domain-dot-spatial" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-3" class="game-box">
+                                <ui:Label text="순서&#10;기억하기" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-memory" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-4" class="game-box">
+                                <ui:Label text="표적 찾기" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-attention" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-5" class="game-box">
+                                <ui:Label text="주제와 단어" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-language" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-6" class="game-box">
+                                <ui:Label text="도형 회전" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-spatial" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-7" class="game-box">
+                                <ui:Label text="숫자 잇기" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-attention" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-8" class="game-box">
+                                <ui:Label text="색깔 찾기" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-executive" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-9" class="game-box">
+                                <ui:Label text="모양 맞추기" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-spatial" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button name="game-box-10" class="game-box">
+                                <ui:Label text="그림 맞추기" class="game-box-label" />
+                                <ui:VisualElement class="game-box-domains">
+                                    <ui:VisualElement class="domain-dot domain-dot-language" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                        </ui:VisualElement>
+                    </ui:ScrollView>
+                    <ui:VisualElement name="custom-scroll-track" class="custom-scroll-track">
+                        <ui:VisualElement name="custom-scroll-dragger" class="custom-scroll-dragger" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- 정보 탭: 인지영역 5개별 난이도 기반 점수(0~100). -->
+            <ui:VisualElement name="tab-content-info" class="game-menu-top tab-page">
+                <ui:Label text="내 점수" class="select-title" />
+                <ui:VisualElement class="info-score-grid">
+                    <ui:VisualElement class="info-score-item">
+                        <ui:Label text="기억력" class="info-score-label" />
+                        <sp:CircularProgress name="info-memory-progress" class="info-score-ring" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="info-score-item">
+                        <ui:Label text="주의력" class="info-score-label" />
+                        <sp:CircularProgress name="info-attention-progress" class="info-score-ring" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="info-score-item">
+                        <ui:Label text="실행기능" class="info-score-label" />
+                        <sp:CircularProgress name="info-executive-progress" class="info-score-ring" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="info-score-item">
+                        <ui:Label text="언어능력" class="info-score-label" />
+                        <sp:CircularProgress name="info-language-progress" class="info-score-ring" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="info-score-item">
+                        <ui:Label text="시공간능력" class="info-score-label" />
+                        <sp:CircularProgress name="info-spatial-progress" class="info-score-ring" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="game-tabs-bar" class="game-nav-grid safe-area-bleed-bottom">
+                <ui:Button text="게임" name="bottom-tab-game" class="game-nav-item" />
+                <ui:VisualElement class="game-nav-divider" />
+                <ui:Button text="정보" name="bottom-tab-info" class="game-nav-item" />
+            </ui:VisualElement>
+
+            <ui:Button text="◀ 메뉴로" name="game-tabs-back-button" class="back-button" />
+        </ui:VisualElement>
+
+        <!-- 설정 (볼륨 3종 + 초기화/나가기/크레딧) -->
+        <ui:VisualElement name="settings-panel" class="overlay hidden">
+            <ui:VisualElement name="settings-dialog" class="dialog dialog-large">
+                <ui:Label text="설정" class="dialog-title" />
+                <ui:VisualElement class="setting-row">
+                    <ui:Label text="전체 볼륨" class="setting-label" />
+                    <ui:Slider name="master-volume-slider" low-value="0" high-value="100" value="80" class="setting-slider" />
+                    <ui:Label text="80" name="master-volume-value" class="setting-value" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="setting-row">
+                    <ui:Label text="배경음악" class="setting-label" />
+                    <ui:Slider name="bgm-volume-slider" low-value="0" high-value="100" value="80" class="setting-slider" />
+                    <ui:Label text="80" name="bgm-volume-value" class="setting-value" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="setting-row">
+                    <ui:Label text="효과음" class="setting-label" />
+                    <ui:Slider name="sfx-volume-slider" low-value="0" high-value="100" value="80" class="setting-slider" />
+                    <ui:Label text="80" name="sfx-volume-value" class="setting-value" />
+                </ui:VisualElement>
+                <ui:VisualElement class="spacer" />
+                <ui:Button text="설정 초기화" name="settings-reset-button" class="big-button secondary" />
+                <ui:Button text="메뉴로 나가기" name="menu-exit-button" class="big-button" />
+                <ui:Button text="크레딧" name="settings-credits-button" class="big-button info" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 크레딧: 만든 사람들 + 외부 자료 출처 표기. 설정 창 대신 뜨고, 닫으면 설정으로 돌아간다. -->
+        <ui:VisualElement name="credits-panel" class="overlay hidden">
+            <ui:VisualElement class="dialog dialog-large">
+                <ui:Label text="크레딧" class="dialog-title" />
+                <ui:ScrollView mode="Vertical" class="credits-scroll">
+                    <ui:Label text="MADE BY" class="credits-heading" />
+                    <ui:Label text="3INQUEUE" name="credits-developers" class="credits-text" />
+                    <ui:Label text="LICENSE" class="credits-heading" />
+                    <ui:Label text="Icons by Magnific, Those Icons, Good Ware, catkuro, Eucalyp, justicon, ultimatearm, Smashicons, nawicon, Pixel perfect, Umeicon, Nhor Phai, Konkapp, narak0rn, Futuer, Dreamcreateicons, Mihimihi, Ning Nong, Vector Squad — www.flaticon.com" class="credits-text" />
+                </ui:ScrollView>
+                <ui:Button text="닫기" name="credits-close-button" class="big-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 종료 확인 -->
+        <ui:VisualElement name="quit-panel" class="overlay hidden">
+            <ui:VisualElement class="dialog">
+                <ui:Label text="게임을 종료할까요?" class="dialog-title" />
+                <ui:Button text="종료" name="quit-confirm-button" class="big-button" />
+                <ui:Button text="취소" name="quit-cancel-button" class="big-button secondary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 게임 시작 전 정보 확인 -->
+        <ui:VisualElement name="game-info-panel" class="overlay hidden">
+            <ui:VisualElement class="dialog game-info-dialog">
+                <ui:VisualElement class="game-info-content">
+                    <ui:VisualElement class="game-info-text">
+                        <ui:Label text="" name="game-info-title" class="dialog-title" />
+                        <ui:Label text="" name="game-info-description" class="dialog-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="game-info-image" class="game-info-image">
+                        <ui:VisualElement name="game-info-video-surface" class="game-info-video-surface" />
+                        <ui:Button text="전체화면으로 보기" name="game-info-fullscreen-button" class="game-info-fullscreen-button" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="spacer" />
+                <ui:VisualElement class="game-info-button-row">
+                    <ui:Button text="돌아가기" name="game-info-back-button" class="big-button secondary game-info-button" />
+                    <ui:Button text="시작하기" name="game-info-start-button" class="big-button game-info-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 게임 정보 영상/사진 전체화면 보기: game-info-video-surface를 여기로 옮겨 넣었다가 닫으면 되돌린다
+             (RenderTexture 배경을 두 곳에 따로 바인딩하면 한쪽이 깨지는 문제가 있어 같은 요소를 재사용). -->
+        <ui:VisualElement name="game-info-fullscreen-panel" class="overlay hidden safe-area-bleed">
+            <ui:Button text="닫기" name="game-info-fullscreen-close-button" class="game-info-fullscreen-close-button" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,48 @@
+.shape-view {
+    width: 100%;
+    height: 100%;
+}
+
+/* 보기 1개는 선지보다 조금 더 크게, 선지 4개는 2x2 대신 한 줄로 쭉 늘어놓는다.
+   태블릿(1200x1600) 화면 가로 폭 안에 한 줄로 다 들어가는 크기로 잡는다. */
+.reference-box {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 48px;
+    border-radius: 24px;
+    border-width: 4px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(230, 225, 210);
+}
+
+.option-grid {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 95%;
+    max-width: 1120px;
+}
+
+.option-card {
+    width: 220px;
+    height: 220px;
+    margin: 10px;
+    padding: 0;
+    border-radius: 24px;
+    border-width: 4px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.option-card:hover,
+.option-card:active {
+    background-color: rgb(255, 255, 255);
+}
+
+.option-card.correct {
+    background-color: rgb(120, 190, 130);
+}
+
+.option-card.wrong {
+    background-color: rgb(230, 140, 130);
+}

@@ -1,0 +1,52 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <!-- 결과창/버튼/공통 배치 스타일은 게임 1(ItemSort.uss), 시간 막대는 게임 8(ColorWord.uss) 것을 같이 쓴다 -->
+    <Style src="../ItemSort/ItemSort.uss" />
+    <Style src="../ColorWord/ColorWord.uss" />
+    <Style src="PictureWord.uss" />
+    <ui:VisualElement name="screen" class="screen">
+
+        <ui:Button text="◀ 나가기" name="quit-button" class="back-button" />
+
+        <ui:Label text="1회차 / 10회" name="progress-label" class="remaining-label" />
+        <ui:Label text="20.0" name="timer-label" class="timer-label" />
+        <ui:VisualElement class="time-slot">
+            <ui:VisualElement class="time-track">
+                <ui:VisualElement name="time-bar" class="time-bar" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:Label text="그림에 알맞은 이름을 눌러주세요" name="instruction-label" class="instruction-label" />
+
+        <!-- 그림 칸: PictureWordSet 항목의 picture가 비어 있으면 안내 문구만 보인다 -->
+        <ui:VisualElement class="picture-box">
+            <ui:VisualElement name="picture-image" class="picture-image" />
+            <ui:Label text="그림 준비 중" name="picture-placeholder" class="picture-placeholder" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="choice-grid">
+            <ui:Button text="사과" name="choice-0" class="choice-button" />
+            <ui:Button text="배" name="choice-1" class="choice-button" />
+            <ui:Button text="포도" name="choice-2" class="choice-button" />
+            <ui:Button text="수박" name="choice-3" class="choice-button" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="result-panel" class="result-screen hidden">
+            <ui:Label text="최종 점수: 0" name="final-score-label" class="result-title" />
+            <ui:VisualElement name="trial-results" class="trial-results" />
+            <ui:VisualElement class="answer-row">
+                <ui:Button text="다시하기" name="retry-button" class="big-button" />
+                <ui:Button text="나가기" name="exit-button" class="big-button danger" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="quit-confirm-panel" class="overlay hidden">
+            <ui:VisualElement class="dialog">
+                <ui:Label text="정말 나가시겠습니까?" class="dialog-title" />
+                <ui:Button text="종료" name="quit-confirm-button" class="big-button quit-confirm" />
+                <ui:Button text="취소" name="quit-cancel-button" class="big-button secondary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+
+    </ui:VisualElement>
+</ui:UXML>

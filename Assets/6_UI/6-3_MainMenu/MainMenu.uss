@@ -1,0 +1,724 @@
+/* 프로젝트 전체 폰트 (모든 화면 글자에 적용). 새 화면 만들면 그 USS에도 똑같이 추가해야 함. */
+* {
+    -unity-font-definition: url("../../8_Fonts/Paperlogy-7Bold.ttf");
+}
+
+.screen {
+    flex-grow: 1;
+    background-color: rgb(245, 240, 230);
+    align-items: center;
+    justify-content: center;
+}
+
+/* 메인 화면 반투명 장식 아이콘. 버튼/글자와 안 겹치게 네 모서리 쪽에만 둔다. */
+.menu-decor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.menu-decor-icon {
+    position: absolute;
+    opacity: 0.2;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 격자처럼 안 보이게 좌/우 변 거리와 세로 위치를 불규칙하게 어긋나게 두고,
+   크기도 확실히 차이 나게(120~340px) 섞는다. */
+.menu-decor-icon-glasses {
+    left: -5%;
+    top: 0%;
+    width: 276px;
+    height: 276px;
+    rotate: -18deg;
+    background-image: url("../../2_Sprites/PictureWord/glasses.png");
+}
+
+.menu-decor-icon-clock {
+    right: -4%;
+    top: 10%;
+    width: 144px;
+    height: 144px;
+    rotate: 14deg;
+    background-image: url("../../2_Sprites/PictureWord/free-icon-clock-2997985.png");
+}
+
+.menu-decor-icon-apple {
+    left: 35%;
+    top: 22%;
+    width: 180px;
+    height: 180px;
+    rotate: -8deg;
+    background-image: url("../../2_Sprites/PictureWord/free-icon-apple-415682.png");
+}
+
+.menu-decor-icon-chair {
+    right: 6%;
+    top: 32%;
+    width: 228px;
+    height: 228px;
+    rotate: -16deg;
+    background-image: url("../../2_Sprites/PictureWord/free-icon-chair-2271480.png");
+}
+
+.menu-decor-icon-cane {
+    left: -8%;
+    top: 48%;
+    width: 408px;
+    height: 408px;
+    rotate: -22deg;
+    background-image: url("../../2_Sprites/PictureWord/free-icon-cane-424493.png");
+}
+
+.menu-decor-icon-bicycle {
+    right: 32%;
+    top: 60%;
+    width: 168px;
+    height: 168px;
+    rotate: 12deg;
+    background-image: url("../../2_Sprites/PictureWord/free-icon-bicycle-9842386.png");
+}
+
+.menu-decor-icon-umbrella {
+    right: -6%;
+    top: 70%;
+    width: 312px;
+    height: 312px;
+    rotate: 18deg;
+    background-image: url("../../2_Sprites/PictureWord/free-icon-umbrella-949816.png");
+}
+
+.menu-decor-icon-guitar {
+    left: 22%;
+    top: 86%;
+    width: 240px;
+    height: 240px;
+    rotate: 10deg;
+    background-image: url("../../2_Sprites/PictureWord/free-icon-guitar-5064094.png");
+}
+
+.menu {
+    width: 90%;
+    max-width: 900px;
+    align-items: stretch;
+    margin-top: 100px;
+}
+
+.title {
+    -unity-text-align: middle-center;
+    font-size: 90px;
+    color: rgb(40, 40, 40);
+    margin-top: -70px;
+    margin-bottom: 220px;
+    white-space: normal;
+}
+
+/* 버튼 모양은 이미지 대신 css border로 그린다(이미지+슬라이싱은 모서리에 얼룩이 생겼음). */
+.big-button {
+    min-height: 160px;
+    font-size: 56px;
+    margin: 28px 0;
+    border-radius: 14px;
+    background-color: rgb(245, 185, 130);
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    color: rgb(30, 30, 30);
+    white-space: normal;
+}
+
+.big-button:hover {
+    background-color: rgb(235, 165, 105);
+}
+
+.big-button:active {
+    background-color: rgb(220, 155, 95);
+}
+
+.big-button.secondary {
+    background-color: rgb(120, 120, 120);
+    color: rgb(255, 255, 255);
+}
+
+.domain-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(245, 240, 230);
+    align-items: center;
+    justify-content: center;
+}
+
+.domain-panel.hidden {
+    display: none;
+}
+
+.back-button {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    height: 90px;
+    padding: 0 28px;
+    font-size: 36px;
+    background-color: rgb(255, 255, 255);
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 14px;
+    color: rgb(40, 40, 40);
+}
+
+.back-button:active {
+    background-color: rgb(225, 225, 225);
+    color: rgb(20, 20, 20);
+}
+
+.select-title {
+    -unity-text-align: middle-center;
+    font-size: 76px;
+    color: rgb(40, 40, 40);
+    margin-bottom: 80px;
+    white-space: normal;
+}
+
+/* 하단 탭바를 뺀 나머지 공간을 다 차지해서, 그 안에서 탭별 내용을 가운데 정렬. */
+.game-menu-top {
+    width: 100%;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 탭 5개를 가로로 나란히 둔 필름스트립(tab-track)을 한 칸 폭(tab-viewport)만 잘라 보여준다.
+   드래그하면 트랙 전체를 손가락 이동량만큼 옮기고, 손을 떼면 가까운 탭으로 스냅한다. */
+.tab-viewport {
+    width: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.tab-track {
+    flex-direction: row;
+    width: 500%;
+    height: 100%;
+}
+
+/* game-menu-top의 width:100%/flex-grow:1을 덮어써서 트랙 안에서 정확히 한 칸(20%) 폭으로 고정. */
+.tab-page {
+    width: 20%;
+    height: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* 게임 박스 9개, 흰 박스(고정 높이) 안에 스크롤 영역을 두고 그 안에서 파란 네모들을 감싼다.
+   높이를 고정해야 내용이 넘칠 때 스와이프로 스크롤된다. */
+.game-box-container {
+    width: 92%;
+    max-width: 940px;
+    height: 900px;
+    border-radius: 14px;
+    background-color: rgb(255, 255, 255);
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+}
+
+.game-box-scroll {
+    flex-grow: 1;
+}
+
+/* 우리가 직접 그리는 스크롤바 트랙/손잡이 (유니티 기본 스크롤바는 숨김, MainMenuController.cs 참고) */
+.custom-scroll-track {
+    position: absolute;
+    width: 40px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+    background-color: rgb(230, 225, 210);
+    border-width: 3px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 8px;
+}
+
+.custom-scroll-dragger {
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    background-color: rgb(245, 185, 130);
+    border-width: 2px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 6px;
+}
+
+.game-box-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px;
+}
+
+.game-box {
+    width: 240px;
+    height: 240px;
+    margin: 14px;
+    padding: 24px 0;
+    border-radius: 14px;
+    background-color: rgb(245, 185, 130);
+    border-width: 5px;
+    border-color: rgb(0, 0, 0);
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game-box-label {
+    font-size: 46px;
+    color: rgb(30, 30, 30);
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+/* 이 게임을 하면 어느 인지영역에 영향을 주는지 색 네모로 표시(정보 탭 영역 색과 동일). */
+.game-box-domains {
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.domain-dot {
+    width: 40px;
+    height: 40px;
+    margin: 0 4px;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: rgb(0, 0, 0);
+}
+
+/* 게임 탭 위쪽에 색-영역 이름 범례. */
+.domain-legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.domain-legend-item {
+    flex-direction: row;
+    align-items: center;
+    margin: 6px 12px;
+}
+
+.domain-legend-label {
+    font-size: 38px;
+    color: rgb(40, 40, 40);
+    margin-left: 8px;
+}
+
+.domain-dot-memory {
+    background-color: rgb(120, 80, 190);
+}
+
+.domain-dot-attention {
+    background-color: rgb(210, 160, 20);
+}
+
+.domain-dot-executive {
+    background-color: rgb(50, 150, 75);
+}
+
+.domain-dot-language {
+    background-color: rgb(40, 110, 195);
+}
+
+.domain-dot-spatial {
+    background-color: rgb(10, 140, 145);
+}
+
+.game-box:active {
+    background-color: rgb(220, 155, 95);
+}
+
+/* 정보 탭: 게임별 점수 원형 그래프 2x2. */
+.info-score-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 96%;
+    max-width: 1040px;
+}
+
+.info-score-item {
+    width: 310px;
+    margin: 16px 16px 56px 16px;
+    align-items: center;
+}
+
+.info-score-label {
+    font-size: 44px;
+    color: rgb(40, 40, 40);
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin-bottom: 12px;
+}
+
+.info-score-ring {
+    width: 310px;
+    height: 310px;
+}
+
+/* 게임 칸: game-menu-top이 flex-grow로 위쪽 공간을 다 가져가서 이 바는 자연스럽게 맨 아래(세이프 에어리어 패딩 안쪽)에 붙음.
+   칸마다 버튼 꾸밈 없이 사이사이 선(divider)으로만 나누고 안에 글자만. */
+.game-nav-grid {
+    flex-direction: row;
+    width: 100%;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+}
+
+.game-nav-item {
+    flex-grow: 1;
+    flex-basis: 0;
+    height: 100%;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 48px;
+    color: rgb(40, 40, 40);
+    -unity-text-align: middle-center;
+    white-space: normal;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    border-width: 0;
+}
+
+.game-nav-item:active {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.game-nav-item.tab-active {
+    background-color: rgb(245, 185, 130);
+    color: rgb(30, 30, 30);
+}
+
+.game-nav-divider {
+    width: 6px;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+}
+
+.big-button.danger {
+    background-color: rgb(210, 55, 55);
+    color: rgb(255, 255, 255);
+}
+
+.big-button.danger:hover {
+    background-color: rgb(185, 45, 45);
+}
+
+/* 크레딧 버튼: 회색(설정 초기화)·주황(메뉴로 나가기)과 구분되는 파랑. 흰 글자와 대비 4.5:1 이상. */
+.big-button.info {
+    background-color: rgb(30, 90, 180);
+    color: rgb(255, 255, 255);
+}
+
+.big-button.info:hover {
+    background-color: rgb(25, 75, 155);
+}
+
+.big-button.info:active {
+    background-color: rgb(20, 60, 130);
+}
+
+/* 설정창 버튼(초기화/메뉴로 나가기/게임 종료)만 다른 화면 big-button보다 작게. */
+#settings-dialog .big-button {
+    min-height: 110px;
+    font-size: 44px;
+    margin: 14px 0;
+}
+
+.setting-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* 폰트 줄 높이 지표가 위아래 비대칭이라 글자가 아래로 처져 보여서 위로 살짝 보정. */
+.setting-label {
+    font-size: 46px;
+    color: rgb(50, 50, 50);
+    min-width: 200px;
+    translate: 0 -6px;
+}
+
+.setting-value {
+    font-size: 46px;
+    color: rgb(20, 20, 20);
+    min-width: 100px;
+    margin-left: 24px;
+    -unity-text-align: middle-right;
+    translate: 0 -6px;
+}
+
+.setting-slider {
+    flex-grow: 1;
+    height: 170px;
+    margin: 0 6px;
+    align-items: center;
+}
+
+.setting-slider .unity-base-slider__input {
+    align-items: center;
+}
+
+/* top:50% + translate로 세로 중앙 정렬 (크기가 바뀌어도 항상 정확히 중앙 유지). */
+.setting-slider .unity-base-slider__tracker {
+    height: 72px;
+    border-radius: 14px;
+    background-color: rgb(255, 245, 225);
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    top: 50%;
+    translate: 0 -50%;
+}
+
+/* 슬라이더 값만큼 트랙 왼쪽부터 채워 보여주는 막대. MainMenuController가 값 바뀔 때마다 너비(%) 갱신. */
+.setting-slider-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 4px;
+    background-color: rgb(64, 168, 89);
+}
+
+/* 손잡이 실제 모양. 레이아웃 크기는 그대로 두고 scale로 그려지는 크기만 키운다
+   (width/height를 직접 키우면 다른 요소와의 레이아웃 계산이 틀어짐). */
+.setting-slider .unity-base-slider__dragger {
+    border-radius: 2px;
+    background-color: rgb(35, 110, 55);
+    border-width: 0;
+    scale: 5.5 5.5;
+}
+
+/* 유니티 기본 테마가 hover/active/focus에서 반투명 배경을 따로 덧칠해서 얼룩처럼 보이는 걸 막는다. */
+.setting-slider .unity-base-slider__dragger:hover,
+.setting-slider .unity-base-slider__dragger:active,
+.setting-slider .unity-base-slider__dragger:focus {
+    background-color: rgb(35, 110, 55);
+}
+
+/* 기본 테마가 포커스 시 이 테두리 박스를 반투명하게 그려서 명시적으로 숨긴다. */
+.setting-slider .unity-base-slider__dragger-border {
+    display: none;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.dialog {
+    width: 90%;
+    max-width: 960px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 28px;
+    padding: 72px 56px;
+    align-items: stretch;
+}
+
+.dialog-large {
+    width: 92%;
+    max-width: 980px;
+    max-height: 90%;
+    padding: 80px 56px 56px 56px;
+}
+
+.x-button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 130px;
+    height: 130px;
+    font-size: 72px;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    border-width: 0;
+    color: rgb(90, 90, 90);
+}
+
+.x-button:active {
+    color: rgb(30, 30, 30);
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.dialog-title {
+    -unity-text-align: middle-center;
+    font-size: 60px;
+    color: rgb(30, 30, 30);
+    margin-bottom: 32px;
+    white-space: normal;
+}
+
+.dialog-text {
+    -unity-text-align: middle-center;
+    font-size: 40px;
+    color: rgb(70, 70, 70);
+    margin-bottom: 32px;
+    white-space: normal;
+}
+
+/* 크레딧: 내용이 길어져도 대화상자 안에서 스크롤된다. */
+.credits-scroll {
+    flex-shrink: 1;
+    margin-bottom: 32px;
+}
+
+.credits-heading {
+    -unity-text-align: middle-center;
+    font-size: 46px;
+    color: rgb(30, 30, 30);
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.credits-text {
+    -unity-text-align: middle-center;
+    font-size: 36px;
+    color: rgb(70, 70, 70);
+    margin-bottom: 32px;
+    white-space: normal;
+}
+
+.game-info-dialog {
+    width: 92%;
+    max-width: 1280px;
+    max-height: 95%;
+    padding: 72px 56px 56px 56px;
+}
+
+/* 왼쪽엔 제목+설명, 오른쪽엔 사진. */
+.game-info-content {
+    flex-direction: row;
+}
+
+.game-info-text {
+    flex-grow: 1;
+    flex-basis: 0;
+    justify-content: flex-start;
+    margin-right: 40px;
+}
+
+.game-info-text .dialog-title,
+.game-info-text .dialog-text {
+    -unity-text-align: middle-left;
+}
+
+/* 게임 소개 사진 자리 - 지금은 빈 칸이고 나중에 사진만 넣으면 됨. 게임 화면 자체가 세로라 스크린샷도
+   세로 비율이 되므로, 가로로 넓은 박스에 넣으면 찌그러진다. 세로 비율로 고정폭을 두고 안 찌그러지게 한다. */
+.game-info-image {
+    flex-shrink: 0;
+    width: 320px;
+    height: 460px;
+    background-color: rgb(245, 240, 230);
+    border-width: 3px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 14px;
+    position: relative;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 작은 박스 안에서 영상이 실제로 그려지는 면. 전체화면으로 들어갈 때 이 요소 자체를
+   game-info-fullscreen-panel로 옮겼다가 닫으면 여기로 되돌린다. */
+.game-info-video-surface {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.game-info-fullscreen-button {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    min-height: 72px;
+    margin: 0;
+    padding: 8px 10px;
+    font-size: 30px;
+    white-space: normal;
+    -unity-text-align: middle-center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+}
+
+/* 전체화면 보기: 화면 전체를 꽉 채운다(여백/둥근 테두리 없음). */
+.game-info-fullscreen-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 전체화면 안의 닫기 버튼. 불투명이라 영상 속(= 게임 화면을 녹화한) 나가기 버튼과 겹쳐도 상관없으니,
+   화면 위쪽을 가로로 전부 덮는 띠로 둔다(어디를 눌러도 닫히게). */
+.game-info-fullscreen-close-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 142px;
+    padding: 0;
+    margin: 0;
+    font-size: 48px;
+    background-color: rgb(30, 30, 30);
+    border-width: 0;
+    border-bottom-width: 4px;
+    border-color: rgb(255, 255, 255);
+    border-radius: 0;
+    color: rgb(255, 255, 255);
+}
+
+.game-info-fullscreen-close-button:active {
+    background-color: rgb(10, 10, 10);
+}
+
+.game-info-button-row {
+    flex-direction: row;
+}
+
+.game-info-button {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 28px 12px;
+}

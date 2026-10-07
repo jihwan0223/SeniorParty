@@ -1,0 +1,56 @@
+* {
+    -unity-font-definition: url("../../../8_Fonts/Paperlogy-7Bold.ttf");
+}
+
+/* 안내문이 2줄("주제 '채소'와 관련된 단어를 / 모두 찾아 터치하세요")과 1줄("잘했어요!")을 오가는데,
+   공용 .instruction-label엔 높이가 고정돼 있지 않아서 줄 수가 바뀔 때마다 아래 단어 격자가 들썩인다.
+   항상 2줄 높이만큼 자리를 잡아둬서 격자 위치가 고정되게 한다. */
+#category-label {
+    height: 144px;
+}
+
+.word-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 92%;
+    max-width: 1160px;
+}
+
+/* 카드 개수가 항상 8개(4x2)로 고정이라, 다른 게임 버튼보다 더 크게 키워도 줄바꿈이 안 깨진다. */
+.word-card {
+    width: 260px;
+    /* 태블릿 터치 영역 88dp(약 142), 글자 28pt(약 45) 이상. */
+    min-height: 170px;
+    margin: 12px;
+    padding: 0 16px;
+    font-size: 54px;
+    border-radius: 14px;
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(230, 225, 210);
+    color: rgb(30, 30, 30);
+    white-space: normal;
+}
+
+.word-card:hover,
+.word-card:active {
+    background-color: rgb(230, 225, 210);
+}
+
+.word-card.wrong {
+    background-color: rgb(230, 140, 130);
+}
+
+.word-card.found {
+    background-color: rgb(120, 190, 130);
+    color: rgb(255, 255, 255);
+}
+
+/* 찾은 카드는 SetEnabled(false)로 비활성화되는데, 기본 테마가 비활성 버튼을 반투명하게 그려서
+   색이 흐려 보인다. 흐림 효과만 없애고 색은 그대로 진하게 유지한다. */
+.word-card.found:disabled {
+    opacity: 1;
+    background-color: rgb(120, 190, 130);
+    color: rgb(255, 255, 255);
+}

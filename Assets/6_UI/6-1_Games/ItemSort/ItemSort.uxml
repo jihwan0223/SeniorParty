@@ -1,0 +1,58 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="ItemSort.uss" />
+    <ui:VisualElement name="screen" class="screen">
+
+        <ui:Button text="◀ 나가기" name="quit-button" class="back-button" />
+
+        <ui:Label text="1회차 / 30회" name="remaining-label" class="remaining-label" />
+        <ui:Label text="7" name="timer-label" class="timer-label" />
+        <ui:VisualElement class="timer-bar-track">
+            <ui:VisualElement name="timer-bar-fill" class="timer-bar-fill" />
+        </ui:VisualElement>
+        <!-- 게임 설명. 고를 때마다 잠깐 격려 문구(틀려도 긍정적으로)로 바뀌었다가 돌아온다. -->
+        <ui:Label text="보관할지 버릴지 골라주세요" name="instruction-label" class="instruction-label" />
+
+        <ui:VisualElement name="stage-row" class="stage-row">
+            <ui:VisualElement name="preview-column" class="stage-column">
+                <ui:Label text="다음" class="stage-header-label" />
+                <ui:VisualElement name="preview-box" class="preview-box">
+                    <ui:VisualElement name="next-item-image" class="preview-icon" />
+                </ui:VisualElement>
+                <ui:Label text="" name="next-item-label" class="shape-name-label" />
+            </ui:VisualElement>
+            <ui:Label text="&#8594;" class="stage-arrow" />
+            <ui:VisualElement class="stage-column">
+                <ui:Label text="현재" class="stage-header-label" />
+                <ui:VisualElement name="item-stage" class="item-stage">
+                    <ui:VisualElement name="item-box" class="item-box">
+                        <ui:VisualElement name="item-image" class="item-icon" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label text="" name="item-label" class="shape-name-label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement class="answer-row">
+            <ui:Button text="보관" name="keep-button" class="big-button" />
+            <ui:Button text="버리기" name="discard-button" class="big-button danger" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="result-panel" class="result-screen hidden">
+            <ui:Label text="최종 점수: 0" name="final-score-label" class="result-title" />
+            <ui:VisualElement name="trial-results" class="trial-results" />
+            <ui:VisualElement class="answer-row">
+                <ui:Button text="다시하기" name="retry-button" class="big-button" />
+                <ui:Button text="나가기" name="exit-button" class="big-button danger" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="quit-confirm-panel" class="overlay hidden">
+            <ui:VisualElement class="dialog">
+                <ui:Label text="정말 나가시겠습니까?" class="dialog-title" />
+                <ui:Button text="종료" name="quit-confirm-button" class="big-button quit-confirm" />
+                <ui:Button text="취소" name="quit-cancel-button" class="big-button secondary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,54 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:sp="SeniorParty.UI" editor-extension-mode="False">
+    <!-- 결과창/버튼 등 공통 스타일은 게임 1(ItemSort.uss) 것을 같이 쓴다 -->
+    <Style src="../ItemSort/ItemSort.uss" />
+    <Style src="../CategoryWord/CategoryWord.uss" />
+    <Style src="RotateShapes.uss" />
+    <ui:VisualElement name="screen" class="screen">
+
+        <ui:Button text="◀ 나가기" name="quit-button" class="back-button" />
+
+        <ui:Label text="1회차 / 8회" name="round-label" class="remaining-label" />
+        <ui:Label text="" name="timer-label" class="timer-label" />
+        <ui:VisualElement class="timer-bar-track">
+            <ui:VisualElement name="timer-bar-fill" class="timer-bar-fill" />
+        </ui:VisualElement>
+        <ui:Label text="보기와 같은 도형을 고르세요" name="instruction-label" class="instruction-label" />
+
+        <ui:VisualElement class="reference-box">
+            <sp:ShapeView name="reference-shape" picking-mode="Ignore" class="shape-view" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="option-grid" class="option-grid">
+            <ui:Button name="option-0" class="option-card">
+                <sp:ShapeView name="option-shape-0" picking-mode="Ignore" class="shape-view" />
+            </ui:Button>
+            <ui:Button name="option-1" class="option-card">
+                <sp:ShapeView name="option-shape-1" picking-mode="Ignore" class="shape-view" />
+            </ui:Button>
+            <ui:Button name="option-2" class="option-card">
+                <sp:ShapeView name="option-shape-2" picking-mode="Ignore" class="shape-view" />
+            </ui:Button>
+            <ui:Button name="option-3" class="option-card">
+                <sp:ShapeView name="option-shape-3" picking-mode="Ignore" class="shape-view" />
+            </ui:Button>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="result-panel" class="result-screen hidden">
+            <ui:Label text="최종 점수: 0" name="final-score-label" class="result-title" />
+            <ui:VisualElement name="trial-results" class="trial-results" />
+            <ui:VisualElement class="answer-row">
+                <ui:Button text="다시하기" name="retry-button" class="big-button" />
+                <ui:Button text="나가기" name="exit-button" class="big-button danger" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="quit-confirm-panel" class="overlay hidden">
+            <ui:VisualElement class="dialog">
+                <ui:Label text="정말 나가시겠습니까?" class="dialog-title" />
+                <ui:Button text="종료" name="quit-confirm-button" class="big-button quit-confirm" />
+                <ui:Button text="취소" name="quit-cancel-button" class="big-button secondary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,100 @@
+/* timer-label(숫자) 바로 아래에 보조로 들어가는 막대 자리. 다른 게임의 .timer-bar-track과 크기 통일. */
+.time-slot {
+    margin-bottom: 110px;
+    width: 500px;
+    max-width: 80%;
+    justify-content: center;
+}
+
+.time-track {
+    height: 24px;
+    border-radius: 12px;
+    border-width: 4px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+/* 숫자(timer-label)와 같은 빨강으로 맞춘다. 폭은 컨트롤러가 남은 시간 비율로 정한다. */
+.time-bar {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(200, 40, 40);
+}
+
+.word-box {
+    width: 800px;
+    max-width: 90%;
+    height: 320px;
+    margin-bottom: 60px;
+    border-radius: 24px;
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+}
+
+/* 글자색은 컨트롤러가 잉크색으로 정한다. 노랑도 흰 배경에서 읽히게 얇은 외곽선. */
+.word-label {
+    font-size: 170px;
+    -unity-text-align: middle-center;
+    -unity-text-outline-width: 1.5px;
+    -unity-text-outline-color: rgb(40, 40, 40);
+}
+
+.color-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 1000px;
+    max-width: 95%;
+}
+
+/* 태블릿 터치 영역 88dp(약 142) 이상, 글자 28pt(약 45) 이상. */
+.color-button {
+    width: 440px;
+    height: 180px;
+    margin: 16px;
+    font-size: 64px;
+    border-radius: 24px;
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.color-button.red,
+.color-button.red:hover,
+.color-button.red:active {
+    background-color: rgb(217, 31, 31);
+}
+
+.color-button.blue,
+.color-button.blue:hover,
+.color-button.blue:active {
+    background-color: rgb(31, 77, 217);
+}
+
+.color-button.yellow,
+.color-button.yellow:hover,
+.color-button.yellow:active {
+    background-color: rgb(237, 184, 0);
+    color: rgb(255, 255, 255);
+}
+
+.color-button.green,
+.color-button.green:hover,
+.color-button.green:active {
+    background-color: rgb(20, 148, 51);
+}
+
+/* 정답/오답 표시는 버튼 색을 가리지 않게 테두리로만. */
+.color-button.correct {
+    border-width: 14px;
+    border-color: rgb(20, 20, 20);
+}
+
+.color-button.wrong {
+    border-width: 14px;
+    border-color: rgb(150, 150, 150);
+}

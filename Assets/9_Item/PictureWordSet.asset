@@ -1,0 +1,335 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb60403dc364b21ab89b1cd9dc9aabb, type: 3}
+  m_Name: PictureWordSet
+  m_EditorClassIdentifier: Assembly-CSharp::SeniorParty.PictureWordSet
+  entries:
+  - picture: {fileID: 21300000, guid: 89514065e1684351b8fa1d1796adf6f0, type: 3}
+    word: "사과"
+    category: "과일"
+    level: 1
+    similarWords:
+    - "배"
+    - "복숭아"
+    - "자두"
+  - picture: {fileID: 21300000, guid: cd8f047acfc54a11a9ce9c972f8495db, type: 3}
+    word: "강아지"
+    category: "동물"
+    level: 1
+    similarWords:
+    - "고양이"
+    - "여우"
+    - "늑대"
+  - picture: {fileID: 21300000, guid: 6623a8412a2f4a49a24a23f92372e31d, type: 3}
+    word: "자동차"
+    category: "탈것"
+    level: 1
+    similarWords:
+    - "버스"
+    - "트럭"
+    - "택시"
+  - picture: {fileID: 21300000, guid: 0aa5c84c329243b9b47b12c97141f847, type: 3}
+    word: "신발"
+    category: "옷"
+    level: 1
+    similarWords:
+    - "양말"
+    - "장화"
+    - "슬리퍼"
+  - picture: {fileID: 21300000, guid: 2318187feb684e3faa880e1175fd9a0c, type: 3}
+    word: "우산"
+    category: "생활용품"
+    level: 2
+    similarWords:
+    - "양산"
+    - "우비"
+    - "부채"
+  - picture: {fileID: 21300000, guid: ab897564f9fa422a9051be4fe40effb8, type: 3}
+    word: "의자"
+    category: "가구"
+    level: 2
+    similarWords:
+    - "소파"
+    - "책상"
+    - "식탁"
+  - picture: {fileID: 21300000, guid: 1a24855ef3dc4d40ad5c7b441204be7a, type: 3}
+    word: "시계"
+    category: "생활용품"
+    level: 2
+    similarWords:
+    - "나침반"
+    - "달력"
+    - "저울"
+  - picture: {fileID: 21300000, guid: a83b1efdcfda466b87fa1890fc753bf3, type: 3}
+    word: "바나나"
+    category: "과일"
+    level: 2
+    similarWords:
+    - "파인애플"
+    - "망고"
+    - "참외"
+  - picture: {fileID: 21300000, guid: d6f0580177718426bbe7f79de48886ea, type: 3}
+    word: "안경"
+    category: "생활용품"
+    level: 3
+    similarWords:
+    - "돋보기"
+    - "망원경"
+    - "선글라스"
+  - picture: {fileID: 21300000, guid: c31e9b41f92b47ea8f3841df943297aa, type: 3}
+    word: "토끼"
+    category: "동물"
+    level: 3
+    similarWords:
+    - "다람쥐"
+    - "햄스터"
+    - "고양이"
+  - picture: {fileID: 21300000, guid: 986f67fb723b41648762a2f65d358172, type: 3}
+    word: "비행기"
+    category: "탈것"
+    level: 3
+    similarWords:
+    - "헬리콥터"
+    - "열기구"
+    - "로켓"
+  - picture: {fileID: 21300000, guid: 93b3cfc43246426d9a89f95c39377d1f, type: 3}
+    word: "모자"
+    category: "옷"
+    level: 3
+    similarWords:
+    - "두건"
+    - "헬멧"
+    - "머리띠"
+  - picture: {fileID: 21300000, guid: 376e55cb703d43bf8d0d075e41dd9b64, type: 3}
+    word: "당근"
+    category: "채소"
+    level: 4
+    similarWords:
+    - "무"
+    - "고구마"
+    - "감자"
+  - picture: {fileID: 21300000, guid: 17674399d18c44ae866b2b6dbbcb8bd6, type: 3}
+    word: "냉장고"
+    category: "가전"
+    level: 4
+    similarWords:
+    - "세탁기"
+    - "전자레인지"
+    - "에어컨"
+  - picture: {fileID: 21300000, guid: 4fe9ea95fefa4313bc1d8bf9f47e8203, type: 3}
+    word: "기타"
+    category: "악기"
+    level: 4
+    similarWords:
+    - "바이올린"
+    - "우쿨렐레"
+    - "첼로"
+  - picture: {fileID: 21300000, guid: dff8942fb8da4fd8b829fe4f248ba802, type: 3}
+    word: "가위"
+    category: "도구"
+    level: 4
+    similarWords:
+    - "칼"
+    - "집게"
+    - "손톱깎이"
+  - picture: {fileID: 21300000, guid: a289c8cc2f814f9180d11d83c2b105e0, type: 3}
+    word: "코끼리"
+    category: "동물"
+    level: 5
+    similarWords:
+    - "하마"
+    - "코뿔소"
+    - "기린"
+  - picture: {fileID: 21300000, guid: dfcc3863e7c34c16aac11fe1f9039c57, type: 3}
+    word: "망치"
+    category: "도구"
+    level: 5
+    similarWords:
+    - "도끼"
+    - "렌치"
+    - "드라이버"
+  - picture: {fileID: 21300000, guid: f0277b8e4c024314975e8745db0fd801, type: 3}
+    word: "피아노"
+    category: "악기"
+    level: 5
+    similarWords:
+    - "오르간"
+    - "아코디언"
+    - "실로폰"
+  - picture: {fileID: 21300000, guid: 030c2b2a8a344c50848270095d3b2493, type: 3}
+    word: "주전자"
+    category: "주방"
+    level: 5
+    similarWords:
+    - "냄비"
+    - "물병"
+    - "찻잔"
+  - picture: {fileID: 21300000, guid: c94c75820dce4e07bb6a65e0b3eb976d, type: 3}
+    word: "거북이"
+    category: "동물"
+    level: 6
+    similarWords:
+    - "자라"
+    - "달팽이"
+    - "악어"
+  - picture: {fileID: 21300000, guid: 4eb5a60069244d7db42117dfd23b3162, type: 3}
+    word: "자전거"
+    category: "탈것"
+    level: 6
+    similarWords:
+    - "오토바이"
+    - "킥보드"
+    - "세발자전거"
+  - picture: {fileID: 21300000, guid: 80cd5ff8551c44d4994d77208161bd12, type: 3}
+    word: "다리미"
+    category: "가전"
+    level: 6
+    similarWords:
+    - "헤어드라이어"
+    - "재봉틀"
+    - "청소기"
+  - picture: {fileID: 21300000, guid: 81051c3f081f470989d7c21a91d1a422, type: 3}
+    word: "사다리"
+    category: "도구"
+    level: 6
+    similarWords:
+    - "계단"
+    - "받침대"
+    - "밧줄"
+  - picture: {fileID: 21300000, guid: b3e51c298029449e8f9004d7ebdc464a, type: 3}
+    word: "빗자루"
+    category: "생활용품"
+    level: 7
+    similarWords:
+    - "대걸레"
+    - "먼지떨이"
+    - "쓰레받기"
+  - picture: {fileID: 21300000, guid: 75653ec594b341abb125bd475436b9a3, type: 3}
+    word: "나비"
+    category: "곤충"
+    level: 7
+    similarWords:
+    - "나방"
+    - "잠자리"
+    - "벌"
+  - picture: {fileID: 21300000, guid: 7d1d49e59090499589f2444436a5969d, type: 3}
+    word: "양초"
+    category: "생활용품"
+    level: 7
+    similarWords:
+    - "성냥"
+    - "전구"
+    - "등잔"
+  - picture: {fileID: 21300000, guid: 1a0d15aeed774eb5992c8f01a38edf8c, type: 3}
+    word: "부엉이"
+    category: "동물"
+    level: 7
+    similarWords:
+    - "독수리"
+    - "까치"
+    - "앵무새"
+  - picture: {fileID: 21300000, guid: 7f4f4fcf6ad54971883d8aaf6df1a421, type: 3}
+    word: "절구"
+    category: "주방"
+    level: 8
+    similarWords:
+    - "맷돌"
+    - "방망이"
+    - "그릇"
+  - picture: {fileID: 21300000, guid: aa139629ca0d428891bd8035fb974e18, type: 3}
+    word: "지팡이"
+    category: "생활용품"
+    level: 8
+    similarWords:
+    - "목발"
+    - "막대기"
+    - "회초리"
+  - picture: {fileID: 21300000, guid: 93a005decc1b495287f8d4df3ee591c9, type: 3}
+    word: "청진기"
+    category: "의료"
+    level: 8
+    similarWords:
+    - "체온계"
+    - "주사기"
+    - "혈압계"
+  - picture: {fileID: 21300000, guid: 6dae85fa0e62486386286fcdc8a7af42, type: 3}
+    word: "등대"
+    category: "건물"
+    level: 8
+    similarWords:
+    - "탑"
+    - "굴뚝"
+    - "풍차"
+  - picture: {fileID: 21300000, guid: f6ef64e362394a56adbbfff6be9b0e33, type: 3}
+    word: "깔때기"
+    category: "주방"
+    level: 9
+    similarWords:
+    - "국자"
+    - "체"
+    - "뒤집개"
+  - picture: {fileID: 21300000, guid: 0897635fcf324d41b20e99e106d4a18a, type: 3}
+    word: "해마"
+    category: "동물"
+    level: 9
+    similarWords:
+    - "불가사리"
+    - "가재"
+    - "새우"
+  - picture: {fileID: 21300000, guid: c5e25fb567294ad787e1c8a45e542218, type: 3}
+    word: "갈퀴"
+    category: "도구"
+    level: 9
+    similarWords:
+    - "삽"
+    - "괭이"
+    - "쇠스랑"
+  - picture: {fileID: 21300000, guid: 3ac6d9eeccdc4b06bcf6d0c6eb4e6528, type: 3}
+    word: "하모니카"
+    category: "악기"
+    level: 9
+    similarWords:
+    - "피리"
+    - "단소"
+    - "오카리나"
+  - picture: {fileID: 21300000, guid: ad75952233804ffebb8587362eb61484, type: 3}
+    word: "컴퍼스"
+    category: "문구"
+    level: 10
+    similarWords:
+    - "각도기"
+    - "자"
+    - "연필깎이"
+  - picture: {fileID: 21300000, guid: e69e5cfb2a054bd288251e99bbd52787, type: 3}
+    word: "주판"
+    category: "문구"
+    level: 10
+    similarWords:
+    - "계산기"
+    - "바둑판"
+    - "장기판"
+  - picture: {fileID: 21300000, guid: 6cbb5d46250c40abac228778e2e8cfa7, type: 3}
+    word: "물레"
+    category: "도구"
+    level: 10
+    similarWords:
+    - "베틀"
+    - "재봉틀"
+    - "바퀴"
+  - picture: {fileID: 21300000, guid: cac80fac0b3c4c358d797e8b83f8c678, type: 3}
+    word: "펠리컨"
+    category: "동물"
+    level: 10
+    similarWords:
+    - "두루미"
+    - "황새"
+    - "갈매기"

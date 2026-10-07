@@ -1,0 +1,85 @@
+/* 공용 .timer-label은 숫자만 크게 보여주는 용도(92px, 빨강)라 "남은 클릭 횟수 : N" 문장엔 안 맞는다.
+   글자 크기는 다른 안내문 수준으로 줄이고, 기본 색은 일반 텍스트로 되돌린 뒤 숫자만 코드에서
+   <color> 태그로 빨갛게 강조한다. */
+#limit-label {
+    font-size: 48px;
+    color: rgb(40, 40, 40);
+    margin-bottom: 110px;
+}
+
+.board-row {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.board-column {
+    align-items: center;
+    margin: 0 12px;
+}
+
+.board-caption {
+    -unity-text-align: middle-center;
+    font-size: 48px;
+    color: rgb(30, 30, 30);
+    margin-bottom: 12px;
+}
+
+/* 큰 네모 하나를 9칸으로 나눈 모양. 칸 선/색칠은 ShapeGridView가 직접 그린다. */
+/* 회전 버튼을 터치 기준(142)만큼 키운 대신 태블릿(1200x1600) 화면에 다 들어가도록 조금 줄임. */
+.board {
+    width: 420px;
+    height: 420px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* 결과창용 작은 모양판(내 모양/목표 모양 비교). 제목·부제 아래 여백이 커서 그만큼 줄여준다. */
+#final-detail-label {
+    margin-bottom: 40px;
+}
+
+.result-board {
+    width: 260px;
+    height: 260px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* 결과창의 모양판과 다시하기/나가기 버튼 사이가 너무 붙어 보여서 간격을 더 띄운다. */
+#result-panel .board-row {
+    margin-bottom: 64px;
+}
+
+.op-row {
+    width: 100%;
+    max-width: 1160px;
+    margin-bottom: 24px;
+}
+
+/* 회전 버튼은 4개를 한 줄에, 완료/초기화보다 작게. 그래도 태블릿 터치 영역 88dp(약 142) 이상. */
+.op-button {
+    width: 23%;
+    margin: 0 8px;
+    min-height: 142px;
+    font-size: 48px;
+    border-radius: 16px;
+}
+
+/* 흰 글자와 대비 4.5:1 이상이 되도록 진한 회색. */
+.big-button.secondary {
+    background-color: rgb(90, 90, 90);
+}
+
+.big-button.secondary:hover,
+.big-button.secondary:active {
+    background-color: rgb(70, 70, 70);
+}
+
+/* 흰 글자와 대비 4.5:1 이상이 되도록 진한 초록. */
+.big-button.confirm {
+    background-color: rgb(30, 120, 55);
+}
+
+.big-button.confirm:hover,
+.big-button.confirm:active {
+    background-color: rgb(25, 100, 45);
+}
